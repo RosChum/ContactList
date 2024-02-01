@@ -1,1 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/contactList
+    username: postgres
+    password: postgres
+    hikari:
+      schema: contact_list
 
+  jpa:
+    show-sql: true

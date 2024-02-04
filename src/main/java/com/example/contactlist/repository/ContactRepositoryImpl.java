@@ -59,8 +59,8 @@ public class ContactRepositoryImpl implements ContactRepository {
     public Contact update(Contact contact) {
         Contact existContact = findById(contact.getId()).orElse(null);
         if (existContact != null) {
-            String sql = "UPDATE contacts SET firstName = ?,lastName = ?, email = ?, phone = ?";
-            jdbcTemplate.update(sql, contact.getFirstName(), contact.getLastName(), contact.getEmail(), contact.getPhone());
+            String sql = "UPDATE contacts SET firstName = ?,lastName = ?, email = ?, phone = ? WHERE id = ?";
+            jdbcTemplate.update(sql, contact.getFirstName(), contact.getLastName(), contact.getEmail(), contact.getPhone(), contact.getId());
             return contact;
         }
         throw new RuntimeException();

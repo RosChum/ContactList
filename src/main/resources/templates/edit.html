@@ -7,20 +7,24 @@
 <body>
 <h1>Список контактов</h1>
 
-<form>
+<form th:action="@{/contact/edit}" th:method="post">
+
+    <label for="id">ID:</label>
+    <input th:text="${contact.getId()}" id="id" name="id" ><br><br>
+
     <label for="firstName">Имя:</label>
-    <input type="text" id="firstName" name="firstName"><br><br>
+    <input type="text" id="firstName" name="firstName" > <br th:text="${contact.getFirstName()}"><br>
 
     <label for="lastName">Фамилия:</label>
-    <input type="text" id="lastName" name="lastName"><br><br>
+    <input type="text" id="lastName" name="lastName" th:text="${contact.getLastName()}"><br><br>
 
     <label for="email">Почта:</label>
-    <input type="email" id="email" name="email"><br><br>
+    <input type="email" id="email" name="email" th:text="${contact.getEmail()}"><br><br>
 
     <label for="phone">Телефон:</label>
-    <input type="text" id="phone" name="phone"><br><br>
+    <input type="text" id="phone" name="phone" th:text="${contact.getPhone()}"><br><br>
 
-    <input type="button" value="Сохранить изменения" onclick="addContact()">
+    <button type="submit"> Сохранить изменения</button>
 </form>
 </body>
 </html>

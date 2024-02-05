@@ -14,6 +14,7 @@ public interface ContactRepository {
     Contact save(Contact contact);
 
     Contact update(Contact contact);
+
     void deleteById(Long id);
 
 

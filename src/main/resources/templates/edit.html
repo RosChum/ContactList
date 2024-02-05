@@ -5,26 +5,31 @@
     <title>Contact List</title>
 </head>
 <body>
-<h1>Список контактов</h1>
+<h1>Редактирование контакта</h1>
 
 <form th:action="@{/contact/edit}" th:method="post">
 
-    <label for="id">ID:</label>
-    <input th:text="${contact.getId()}" id="id" name="id" ><br><br>
+    <input type="hidden" name="id" th:value="${contact.id}">
 
-    <label for="firstName">Имя:</label>
-    <input type="text" id="firstName" name="firstName" > <br th:text="${contact.getFirstName()}"><br>
+    <div>
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" required th:value="${contact.firstName}"> <br><br>
+    </div>
 
-    <label for="lastName">Фамилия:</label>
-    <input type="text" id="lastName" name="lastName" th:text="${contact.getLastName()}"><br><br>
+    <div>
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" required th:value="${contact.lastName}"><br><br>
+    </div>
+    <div>
+        <label for="email">Почта:</label>
+        <input type="email" id="email" name="email" required th:value="${contact.email}"><br><br>
+    </div>
+    <div>
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone" required th:value="${contact.phone}"><br><br>
+    </div>
 
-    <label for="email">Почта:</label>
-    <input type="email" id="email" name="email" th:text="${contact.getEmail()}"><br><br>
-
-    <label for="phone">Телефон:</label>
-    <input type="text" id="phone" name="phone" th:text="${contact.getPhone()}"><br><br>
-
-    <button type="submit"> Сохранить изменения</button>
+    <button type="submit">Сохранить изменения</button>
 </form>
 </body>
 </html>

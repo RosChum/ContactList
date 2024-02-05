@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,7 +25,7 @@ public class MainController {
     }
 
     @PostMapping("/")
-    public String addContact(Contact contact){
+    public String addContact(Contact contact) {
         contactService.save(contact);
         return "redirect:/";
     }
@@ -36,7 +37,7 @@ public class MainController {
     }
 
     @PostMapping("contact/edit")
-    public String edit(Contact contact) {
+    public String edit(@ModelAttribute Contact contact) {
         log.info(" edit " + contact);
         contactService.update(contact);
         return "redirect:/";

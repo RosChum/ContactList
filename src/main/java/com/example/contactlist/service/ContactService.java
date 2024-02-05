@@ -1,7 +1,7 @@
 package com.example.contactlist.service;
 
-import com.example.contactlist.repository.ContactRepository;
 import com.example.contactlist.model.Contact;
+import com.example.contactlist.repository.ContactRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class ContactService {
         return contactRepository.findAll();
     }
 
-   public Contact findById(Long id) {
+    public Contact findById(Long id) {
         return contactRepository.findById(id).orElse(null);
     }
 

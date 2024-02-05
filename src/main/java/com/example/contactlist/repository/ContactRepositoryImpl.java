@@ -1,5 +1,6 @@
 package com.example.contactlist.repository;
 
+import com.example.contactlist.mapper.ContactMapper;
 import com.example.contactlist.model.Contact;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,15 +36,7 @@ public class ContactRepositoryImpl implements ContactRepository {
     @Override
     public Optional<Contact> findById(Long id) {
         String query = "SELECT * FROM contacts WHERE id = ?";
-        Contact contact = jdbcTemplate.queryForObject(query, (ResultSet rs, int row) -> {
-            Contact existContact = new Contact();
-            existContact.setId(rs.getLong("id"));
-            existContact.setFirstName(rs.getString("firstName"));
-            existContact.setLastName(rs.getString("lastName"));
-            existContact.setEmail(rs.getString("email"));
-            existContact.setPhone(rs.getString("phone"));
-            return existContact;
-        }, id);
+        Contact contact = jdbcTemplate.queryForObject(query, new ContactMapper(), id);
         return Optional.ofNullable(contact);
     }
 
